@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # myFirstGit
 Week 2 Lab - This project was supposed to be a simple print hello world to the console but I've gone a little overboard and included some HTML and CSS to display hello world on a web page.
 
@@ -32,3 +33,6 @@ You can then run the application by navigating to your projects directory in the
 | 17 Sep 18 | Weekly Laboratories (Laboratory): Laboratory classes (Laboratory) | 4, 5 |
 | 24 Sep 18 | Lectures (Lecture Series): End-to-end testing frameworks and methodologies | 4 |
 | 24 Sep 18 | Weekly Laboratories (Laboratory): Laboratory classes (Laboratory) | 4 |
+=======
+
+>>>>>>> 771c62e9f43d008d5dc78a8fa8927e4faf27b23d
