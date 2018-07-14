@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+header {
+    text-align: center;
+    padding: 0px;
+    width: 1900px;
+    height: 30vmin;
+    background-color: black;
+    display: table-cell;
+    vertical-align: middle;
+}
+header div {
+    display: inline-block;
+    width: 100%;
+}
+header div h1 {
+    color: red;
+    font-style: italic;
+    font-size: 5em;
+}
