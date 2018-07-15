@@ -2,11 +2,14 @@ body {
     font-family: 'Pacifico', cursive;
     margin: 0;
     padding: 0;
+    width: 100vw;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 header {
     text-align: center;
     padding: 0px;
-    width: 1900px;
+    width: 100vw;
     height: 10vh;
     background-color: black;
     display: table-cell;
@@ -17,8 +20,6 @@ header div {
     width: 100%;
 }
 header div h1 {
-    text-shadow: 1.5px 1.5px #862828;
     color: red;
-    font-style: italic;
     font-size: 2.5em;
 }
