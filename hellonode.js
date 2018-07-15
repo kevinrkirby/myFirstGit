@@ -1,30 +1,19 @@
-var http = require("http");
-var fs = require('fs');
-var port = 8080;
-var serverUrl = "127.0.0.1";
-var counter = 0;
+var path = require('path');
+var express = require('express');
+var logger = require('morgan');
+var app = express();
 
-var server = http.createServer(function (req, res) {
+// Log the requests
+app.use(logger('dev'));
 
-    counter++;
-    console.log("Request: " + req.url + " (" + counter + ")");
+// Serve static files
+app.use(express.static(path.join(__dirname, '/'))); 
 
-    if (req.url == "/index.html") {
-
-        fs.readFile("index.html", function (err, text) {
-            res.setHeader("Content-Type", "text/html");
-            res.end(text);
-        });
-        return;
-
-    }
-
-    res.setHeader("Content-Type", "text/html");
-    res.end("<p>Hello World. Request counter: " + counter + ".</p>");
-
+// Route for everything else.
+app.get('*', function(req, res){
+  res.send('Hello World');
 });
 
-server.listen(port, hostname, () => {
-  console.log("hello world");  
-  console.log('Server running at http://${hostname}:${port}/');
-});
+// Fire it up!
+app.listen(8080);
+console.log('Listening on port 8080');
