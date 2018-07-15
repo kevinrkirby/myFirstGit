@@ -16,4 +16,4 @@ app.get('*', function(req, res){
 
 // Fire it up!
 app.listen(8080);
-console.log('Listening on port 8080');
+console.log('Listening http://127.0.0.1:8080/');
