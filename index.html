@@ -11,5 +11,20 @@
                 <h1>Hello world, welcome to Node.js</h1>
             </div>
         </header>
+        <div class="container">
+            
+            <p class="result"></p>
+            <script>
+                console.log("Hello World");
+                function addNums(numa, numb){
+                    var result = numa + numb;
+                    return result;
+                }
+                var elements = document.getElementsByClassName('result');
+                elements[0].innerHTML = addNums(10,5);
+                console.log(elements);
+                console.log(addNums(10,5));
+            </script>
+        </div>
     </body>
 </html>
