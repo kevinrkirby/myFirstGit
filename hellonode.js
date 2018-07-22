@@ -6,14 +6,34 @@ var bodyParser = require('body-parser');
 // Serve static files
 app.use(express.static(__dirname + '/www/')); 
 
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+app.use(bodyParser.json());
 // Route for login.
 app.get('/login', function(req, res){
   res.sendFile(__dirname + '/www/auth/login.html');
 });
 
+app.post('/attempt.js', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  var jsonData = {
+    "username" : username,
+    "password" : password
+  }
+  res.send(jsonData);
+  console.log(jsonData);
+});
+
+// Route for loging submission
 app.get('/attempt.js', function(req, res) {
   res.sendFile(__dirname + '/www/auth/attempt.js');
 });
+
+
+
 // Route for everything else.
 app.get('*', function(req, res){
     res.sendFile(__dirname + '/www/not-found.html');
