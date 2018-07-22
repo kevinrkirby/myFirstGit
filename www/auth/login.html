@@ -12,22 +12,19 @@
     <title>Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/auth/login.css" type="text/css">
+    <link rel="stylesheet" href="global.css" type="text/css">
 </head>
 
 <body>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <header>
-        <nav>
 
-        </nav>
-    </header>
+    
     <div class="container">
         <div class="login-form">
             <div class="form-container">
-                <form action="attempt" method="post">
+                <form action="javascript:checkLoginCredentials();" method="post">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" value="DummyUsername">
                     <label for="password">Password</label>

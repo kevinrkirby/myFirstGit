@@ -15,6 +15,11 @@ app.get('/login', function(req, res){
   res.sendFile(__dirname + '/www/auth/login.html');
 });
 
+// Route for global.css.
+app.get('/global.css', function(req, res){
+  res.sendFile(__dirname + '/www/global.css');
+});
+
 // Post data to attempt.js
 app.post('/attempt', function(req, res) {
   var username = req.body.username;
@@ -31,11 +36,8 @@ app.get('/attempt', function(req, res) {
 });
 
 app.get('/getData', function(req, res) {
-  var myObject = { 
-    "username": "DummyUsername",
-    "password": "DummyPassword",
-  };
-  res.send(JSON.stringify(myObject, null, 3));
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({ "username": "DummyUsername", "password": "DummyPassword"}));
 });
 
 // Route for everything else.
