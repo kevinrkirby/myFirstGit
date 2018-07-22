@@ -20,6 +20,9 @@ $(function() {
             if(username === data.username && password === data.password) {
                 alert("Login successful!");
             }
+            else {
+                alert("Login failed!");
+            }
             
         });
     };
