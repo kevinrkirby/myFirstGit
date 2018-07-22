@@ -16,19 +16,39 @@ header {
     padding: 0px;
     width: 100vw;
     height: 10vh;
-    background-color: black;
+    background-color: #ff8f8f;
     display: table-cell;
     vertical-align: middle;
+    margin-bottom: 0px;
 }
 header div {
     display: inline-block;
     width: 100%;
 }
 header div h1 {
-    color: red;
+    color: #f9ffa1;
     font-size: 2.5em;
 }
-
+nav {
+    text-align: center;
+    margin: 0px;
+    height: 30px;
+    width: 100vw;
+    background-color: #bde3ff;
+}
+nav ul {
+    float: right;
+    margin: 0px;
+}
+nav ul li {
+    text-decoration: none;
+    display: block;
+    line-height: 30px;
+    width: 10vw;
+}
+nav ul li:hover { 
+    background-color: white;
+}
 /*
     not-found.css
 */
@@ -64,9 +84,6 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-header {
-    width: vw100;
-}
 .login-form {
     width: 50vw;
     margin: auto;
@@ -80,7 +97,7 @@ header {
     top: 0; bottom: 0; left: 0; right: 0;
     border: 1px solid black;
     border-radius: 5px;
-    background-color: #eca1a6;
+    background-color: #bde3ff;
     display:table-cell;
     vertical-align:middle;
 }
