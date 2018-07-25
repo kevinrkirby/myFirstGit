@@ -14,13 +14,17 @@ $(function() {
                     password = formData[value].value;
                 }
             }
-            var logThis = {
-                "username": username,
-                "password": password
-            };
+            var logThis = (function () {
+                var myObject = {
+                    "username": username,
+                    "password": password
+                };
+                return function () { return myObject; }
+            })();
+
             console.log(logThis);
             if(username === data.username && password === data.password) {
-                alert("Login successful!" + JSON.stringify(logThis));
+                alert("Login successful!" + JSON.stringify(logThis()));
             }
             else {
                 alert("Login failed!");
