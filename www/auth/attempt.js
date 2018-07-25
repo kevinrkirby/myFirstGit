@@ -7,7 +7,6 @@ $(function() {
             var formData = $('form').serializeArray();
             var username; var password; var result;
             for (var value in formData) {
-                console.log(formData[value].value);
                 if(formData[value].name == "username") {
                     username = formData[value].value;
                 }
@@ -15,10 +14,13 @@ $(function() {
                     password = formData[value].value;
                 }
             }
-            console.log("Username: "+ username + " - Password: " + password);
-            console.log("Username: "+ data.username + " - Password: " + data.password);
+            var logThis = {
+                "username": username,
+                "password": password
+            };
+            console.log(logThis);
             if(username === data.username && password === data.password) {
-                alert("Login successful!");
+                alert("Login successful!" + JSON.stringify(logThis));
             }
             else {
                 alert("Login failed!");
