@@ -1,7 +1,14 @@
+/* We need to define the variable 
+before the document has finished loading. */
+
 var checkLoginCredentials;
+
+/* Shorthand for document.ready() {} */
+
 $(function() {
     console.log("ready!");
 
+    /* Here we check that credentials match the "database" information */
     checkLoginCredentials = function() {
         $.get("/getData").done(function( data ) {
             var formData = $('form').serializeArray();
@@ -14,11 +21,12 @@ $(function() {
                     password = formData[value].value;
                 }
             }
+
+            /* This is a closure that will return the
+            credentials of the user who just logged in */
+
             var logThis = (function () {
-                var myObject = {
-                    "username": username,
-                    "password": password
-                };
+                var myObject = {"username": username,"password": password};
                 return function () { return myObject; }
             })();
 
