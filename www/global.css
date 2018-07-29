@@ -143,4 +143,8 @@ button[type=submit] {
     border-radius: 4px;
     cursor: pointer;
     float: left;
-  }
+}
+
+#post-result {
+    text-align: center;
+}
