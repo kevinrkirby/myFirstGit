@@ -1,13 +1,9 @@
-/* We need to define the variable 
-before the document has finished loading. */
-
-
 /* Shorthand for document.ready() {} */
 
 $(function() {
     console.log("ready!");
 
-    /* Here we check that credentials match the "database" information */
+    /* $ajax Callback : Here we check that credentials match the "database" information */
     var loginSuccess = function (data) {
         console.log(data);
         if(data) {
@@ -16,7 +12,6 @@ $(function() {
 
         // Reset FormData after Posting
         resetForm();
-        
         function resetForm(){
             $("#username").val("");
             $("#password").val("");
@@ -53,5 +48,4 @@ $(function() {
             }
         });
     };
-
 });
