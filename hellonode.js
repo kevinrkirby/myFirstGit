@@ -1,43 +1,44 @@
 const express = require('express');
 const app = express();
+const router = express.Router();
 const http = require('http').Server(app);
 const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+var loginResult;
 
 // Serve static files
 app.use(express.static(__dirname + '/www/')); 
-
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
 // Route for login.
 app.get('/login', function(req, res){
   res.sendFile(__dirname + '/www/auth/login.html');
 });
 
-// Route for global.css.
+// send back login result to /login
+app.post('/login', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
+  if (req.body.username == "DummyUsername" && req.body.password == "DummyPassword") {
+    loginResult = {'Login' : "Success" };
+  } else {
+    loginResult = {'Login': false,errors:{res}};
+  }
+  return res.send(loginResult);
+});
+
+// Route for global.css
 app.get('/global.css', function(req, res){
   res.sendFile(__dirname + '/www/global.css');
 });
 
-// Post data to attempt.js
-app.post('/attempt', function(req, res) {
-  var username = req.body.username;
-  var password = req.body.password;
-  var jsonData = {
-    "username" : username,
-    "password" : password
-  };
-});
-
-// Route for loging submission
+// Route for attempt.js
 app.get('/attempt', function(req, res) {
   res.sendFile(__dirname + '/www/auth/attempt.js');
 });
 
 app.get('/getData', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({ "username": "DummyUsername", "password": "DummyPassword"}));
+  res.send(JSON.stringify(loginResult));
 });
 
 // Route for everything else.

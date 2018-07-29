@@ -1,7 +1,6 @@
 /* We need to define the variable 
 before the document has finished loading. */
 
-var checkLoginCredentials;
 
 /* Shorthand for document.ready() {} */
 
@@ -9,35 +8,49 @@ $(function() {
     console.log("ready!");
 
     /* Here we check that credentials match the "database" information */
-    checkLoginCredentials = function() {
-        $.get("/getData").done(function( data ) {
-            var formData = $('form').serializeArray();
-            var username; var password; var result;
-            for (var value in formData) {
-                if(formData[value].name == "username") {
-                    username = formData[value].value;
-                }
-                else if(formData[value].name == "password") {
-                    password = formData[value].value;
-                }
-            }
+    var loginSuccess = function (data) {
+        console.log(data);
+        if(data) {
+            $('#post-result').html("<p>" + JSON.stringify(data) + "</p>");
+        }
 
-            /* This is a closure that will return the
-            credentials of the user who just logged in */
+        // Reset FormData after Posting
+        resetForm();
+        
+        function resetForm(){
+            $("#username").val("");
+            $("#password").val("");
+        }      
+    };
 
-            var logThis = (function () {
-                var myObject = {"username": username,"password": password};
-                return function () { return myObject; }
-            })();
+    var loginFailed = function (error) {
+        $('#post-result').html("<p>{'Login': 'Failed'}</p>");
+    };
 
-            console.log(logThis);
-            if(username === data.username && password === data.password) {
-                alert("Login successful!" + JSON.stringify(logThis()));
+    $('#loginform').submit(function( event ) {
+        event.preventDefault();
+        postForm();
+    });
+
+    var postForm = function () {
+    	// PREPARE FORM DATA
+    	var formData = {
+    		username : $("#username").val(),
+    		password :  $("#password").val()
+        };
+
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url : window.location,
+            data : JSON.stringify(formData),
+            datatype : "json",
+            success: function (data) {
+                loginSuccess(data);
+            },
+            error: function (jqXHR) {
+                loginFailed(jqXHR);
             }
-            else {
-                alert("Login failed!");
-            }
-            
         });
     };
 
